@@ -27,7 +27,7 @@ import javax.mail.internet.MimeMultipart;
  */
 public class EmailManager {
 
-    public boolean sendHTML(String asunto, String remitente, String destinatario, HashMap<String, String> params, String rutaPlantilla, Session s) {
+    public static boolean sendHTML(String asunto, String remitente, String destinatario, HashMap<String, String> params, String rutaPlantilla, Session s) {
         boolean enviado = false;
         try {
             String message;
