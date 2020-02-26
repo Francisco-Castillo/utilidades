@@ -15,6 +15,13 @@
   </properties>
 
   <dependencies>
+    <!--Jasper Report-->
+    <dependency>
+      <groupId>net.sf.jasperreports</groupId>
+      <artifactId>jasperreports</artifactId>
+      <version>5.5.0</version>
+      <type>jar</type>
+    </dependency>
     <!--Logger-->
     <dependency>
       <groupId>log4j</groupId>
@@ -29,10 +36,15 @@
     </dependency>
 
     <dependency>
-      <groupId>javax</groupId>
-      <artifactId>javaee-api</artifactId>
-      <version>7.0</version>
-      <scope>provided</scope>
+      <groupId>jakarta.platform</groupId>
+      <artifactId>jakarta.jakartaee-api</artifactId>
+      <version>8.0.0</version>
+    </dependency>
+    <!-- Json Web Token-->
+    <dependency>
+      <groupId>io.jsonwebtoken</groupId>
+      <artifactId>jjwt</artifactId>
+      <version>0.9.0</version>
     </dependency>
   </dependencies>
 
