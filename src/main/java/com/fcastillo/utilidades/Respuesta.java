@@ -1,6 +1,7 @@
 package com.fcastillo.utilidades;
 
 //<editor-fold defaultstate="collapsed" desc="imports">
+import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
 import javax.json.Json;
@@ -55,7 +56,26 @@ public class Respuesta {
                 .findFirst().orElse(null);
         return status;
     }//</editor-fold>
-    
-    
+
+    /**
+     * 
+     * @param statusCode - codigo de respuesta http
+     * @param mensaje - mensaje para el cliente
+     * @return 
+     */
+    public Response simpleJSONResponse(int statusCode, String mensaje) {
+        JsonObjectBuilder job = Json.createObjectBuilder();
+        JsonArrayBuilder jab = Json.createArrayBuilder();
+        
+        Response.Status status = getStatus(statusCode);
+
+        job.add("status", Json.createObjectBuilder()
+                .add("statusCode", status.getStatusCode())
+                .add("statusMessage", status.getReasonPhrase()))
+                .add("message", mensaje);
+        
+        return Response.status(status).entity(job.build()).build();
+
+    }
 
 }
