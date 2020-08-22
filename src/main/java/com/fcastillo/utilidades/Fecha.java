@@ -195,7 +195,7 @@ public class Fecha {
         return "";
 
     }//</editor-fold>
-    
+
     //<editor-fold defaultstate="collapsed" desc="ISO8601()">
     public static String ISO8601(Date date) {
         TimeZone tz = TimeZone.getTimeZone("UTC");
@@ -203,6 +203,37 @@ public class Fecha {
         df.setTimeZone(tz);
         String nowAsISO = df.format(date);
         return nowAsISO;
+    }//</editor-fold>
+
+    //<editor-fold defaultstate="collapsed" desc="stringToLocalDate()">
+    /**
+     *
+     * @param date String con formato yyyMMdd que representa una fecha
+     * @return LocalDate con formato yyyy-MM-dd
+     */
+    public static LocalDate stringToLocalDate(String date) {
+
+        int year = Integer.parseInt(date.substring(0, 4));
+        int month = 0;
+        int day = 0;
+        String sMes = date.substring(4, 6);
+        String sDia = date.substring(6, date.length());
+
+        if (sMes.charAt(0) == '0') {
+            month = Integer.parseInt(Character.toString(sMes.charAt(1)));
+        } else {
+            month = Integer.parseInt(sMes);
+        }
+
+        if (sDia.charAt(0) == '0') {
+            day = Integer.parseInt(Character.toString(sDia.charAt(1)));
+        } else {
+            day = Integer.parseInt(sDia);
+        }
+
+        LocalDate localDate = LocalDate.of(year, month, day);
+
+        return localDate;
     }//</editor-fold>
 
 }
