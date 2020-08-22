@@ -211,7 +211,7 @@ public class Fecha {
      * @param date String con formato yyyMMdd que representa una fecha
      * @return LocalDate con formato yyyy-MM-dd
      */
-    public static LocalDate stringToLocalDate(String date) {
+    public static LocalDate deStringALocalDate(String date) {
 
         int year = Integer.parseInt(date.substring(0, 4));
         int month = 0;
