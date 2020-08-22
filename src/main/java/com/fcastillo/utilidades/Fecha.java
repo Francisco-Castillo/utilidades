@@ -10,6 +10,7 @@ import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.TimeZone;
 //</editor-fold>
 
 /**
@@ -193,6 +194,15 @@ public class Fecha {
         }
         return "";
 
+    }//</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="ISO8601()">
+    public static String ISO8601(Date date) {
+        TimeZone tz = TimeZone.getTimeZone("UTC");
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm'Z'"); // Quoted "Z" to indicate UTC, no timezone offset
+        df.setTimeZone(tz);
+        String nowAsISO = df.format(date);
+        return nowAsISO;
     }//</editor-fold>
 
 }
