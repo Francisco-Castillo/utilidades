@@ -33,9 +33,9 @@ public class Respuesta implements IRespuestaJSON {
                 .add("statusMessage", status.getReasonPhrase())
                 .add("listMessages", Json.createArrayBuilder(lstMensajes)))
                 .add("totalRows", totalRows)
-                .add("objeto", arregloElementos).build();
+                .add("objeto", arregloElementos);
 
-        return Response.status(status).entity(job).build();
+        return Response.status(status).entity(job.build()).build();
     }
 
     @Override
@@ -78,9 +78,9 @@ public class Respuesta implements IRespuestaJSON {
                 .add("statusCode", status.getStatusCode())
                 .add("statusMessage", status.getReasonPhrase()))
                 .add("totalRows", totalRows)
-                .add("objeto", arregloElementos).build();
+                .add("objeto", arregloElementos);
 
-        return Response.status(status).entity(job).build();
+        return Response.status(status).entity(job.build()).build();
     }
 
 }
