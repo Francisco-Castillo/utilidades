@@ -68,4 +68,19 @@ public class Respuesta implements IRespuestaJSON {
         return status;
     }//</editor-fold>
 
+    @Override
+    public Response jsonResponse(int statusCode, JsonArrayBuilder arregloElementos, int totalRows) {
+        JsonObjectBuilder job = Json.createObjectBuilder();
+
+        Response.Status status = getStatus(statusCode);
+
+        job.add("status", Json.createObjectBuilder()
+                .add("statusCode", status.getStatusCode())
+                .add("statusMessage", status.getReasonPhrase()))
+                .add("totalRows", totalRows)
+                .add("objeto", arregloElementos).build();
+
+        return Response.status(status).entity(job).build();
+    }
+
 }

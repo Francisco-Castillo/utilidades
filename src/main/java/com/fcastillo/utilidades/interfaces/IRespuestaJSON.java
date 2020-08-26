@@ -27,6 +27,16 @@ public interface IRespuestaJSON {
     public Response jsonResponse(int statusCode, List<String> lstMensajes, JsonArrayBuilder arregloElementos, int totalRows);
 
     /**
+     * *
+     *
+     * @param statusCode - Codigo de estado HTTP
+     * @param arregloElementos - Listado de elementos a retonar
+     * @param totalRows - Cantidad de elementos retornados
+     * @return - Respuesta JSON
+     */
+    public Response jsonResponse(int statusCode, JsonArrayBuilder arregloElementos, int totalRows);
+
+    /**
      *
      * @param statusCode - Representa el codigo de estado a enviar al cliente
      * @param mensaje - Mensaje a mostrar
