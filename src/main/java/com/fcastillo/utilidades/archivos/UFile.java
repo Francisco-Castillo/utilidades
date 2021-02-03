@@ -13,7 +13,7 @@ import java.io.OutputStream;
 public class UFile {
 
     //<editor-fold defaultstate="collapsed" desc="saveFile()">
-    public void saveFile(InputStream uploadedInputStream, String uploadedFileLocation) {
+    public static void saveFile(InputStream uploadedInputStream, String uploadedFileLocation) {
         try {
             OutputStream out = null;
             int read = 0;
@@ -37,7 +37,7 @@ public class UFile {
      * @param filePath ruta completa en donde se encuentra el archivo
      * @return
      */
-    public boolean isFileExists(String filePath) {
+    public static boolean isFileExists(String filePath) {
         File tempFile = new File(filePath);
         return tempFile.exists();
     }//</editor-fold>
@@ -49,7 +49,7 @@ public class UFile {
      * @param nombrearchivo
      * @return
      */
-    public String getFileExtension(String nombrearchivo) {
+    public static String getFileExtension(String nombrearchivo) {
         if (nombrearchivo.lastIndexOf(".") != -1 && nombrearchivo.lastIndexOf(".") != 0) {
             return nombrearchivo.substring(nombrearchivo.lastIndexOf(".") + 1);
         } else {
