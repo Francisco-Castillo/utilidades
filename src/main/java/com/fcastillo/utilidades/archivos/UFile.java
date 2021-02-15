@@ -13,18 +13,18 @@ import java.io.OutputStream;
 public class UFile {
 
     //<editor-fold defaultstate="collapsed" desc="saveFile()">
-    public static void saveFile(InputStream uploadedInputStream, String uploadedFileLocation) {
+    public static void saveFile(InputStream uploadedInputStream, String uploadedFileLocation, String fileName) {
+        String path = uploadedFileLocation.concat(fileName);
+        File file = new File(path);
         try {
-            OutputStream out = null;
-            int read = 0;
-            byte[] bytes = new byte[1024];
-
-            out = new FileOutputStream(new File(uploadedFileLocation));
-            while ((read = uploadedInputStream.read(bytes)) != -1) {
-                out.write(bytes, 0, read);
+            FileOutputStream fos = new FileOutputStream(file);
+            // read the submitted file as chunks, and write to the server's file
+            byte[] buff = new byte[5 * 1024];
+            int len;
+            while ((len = uploadedInputStream.read(buff)) != -1) {
+                fos.write(buff, 0, len);
             }
-            out.flush();
-            out.close();
+            fos.close();
         } catch (IOException e) {
 
             e.printStackTrace();

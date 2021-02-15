@@ -27,7 +27,7 @@ import javax.mail.internet.MimeMultipart;
  */
 public class EmailManager {
 
-    public static boolean sendHTML(String asunto, String remitente, String destinatario, HashMap<String, String> params, String rutaPlantilla, Session s) {
+    public static boolean sendTemplate(String asunto, String remitente, String destinatario, HashMap<String, String> params, String rutaPlantilla, Session s) {
         boolean enviado = false;
         try {
             String message;
@@ -75,6 +75,40 @@ public class EmailManager {
             mimeMessage.setContent(multipart);
 
             Transport.send(mimeMessage, mimeMessage.getAllRecipients());
+            enviado = true;
+        } catch (Exception e) {
+            System.out.println("Failed send mail()" + e.getMessage());
+        }
+        return enviado;
+    }
+    
+    public static boolean sendTemplateHtml(String asunto, String remitente, String destinatario, String htmlTemplate, Session s) {
+        boolean enviado = false;
+        try {
+            String message;
+
+            MimeMessage mimeMessage = new MimeMessage(s);
+
+            mimeMessage.setFrom(new InternetAddress(remitente));
+
+            InternetAddress[] internetAddresses = {new InternetAddress(destinatario)};
+
+            mimeMessage.setRecipients(Message.RecipientType.TO, internetAddresses);
+
+            mimeMessage.setSubject(asunto);
+
+            Multipart multipart = new MimeMultipart();
+
+            MimeBodyPart mimeBodyPart = new MimeBodyPart();
+
+            mimeBodyPart.setContent(htmlTemplate, "text/html");
+
+            multipart.addBodyPart(mimeBodyPart);
+
+            mimeMessage.setContent(multipart);
+
+            Transport.send(mimeMessage, mimeMessage.getAllRecipients());
+            
             enviado = true;
         } catch (Exception e) {
             System.out.println("Failed send mail()" + e.getMessage());
