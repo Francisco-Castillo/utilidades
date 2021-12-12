@@ -4,7 +4,7 @@
 
     <groupId>com.fcastillo</groupId>
     <artifactId>utilidades</artifactId>
-    <version>15.2.2021-SNAPSHOT</version>
+    <version>11.12.2021-SNAPSHOT</version>
     <packaging>ejb</packaging>
 
     <name>utilidades</name>
@@ -26,7 +26,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <jakarta.version>8.0.0</jakarta.version>
         <jsonwebtoken.version>0.9.0</jsonwebtoken.version>
-        <log4j.version>2.13.3</log4j.version>
+        <log4j.version>2.15.0</log4j.version>
     </properties>
 
     <dependencies>
