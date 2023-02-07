@@ -4,7 +4,7 @@
 
     <groupId>com.fcastillo</groupId>
     <artifactId>utilidades</artifactId>
-    <version>13.02.2022-SNAPSHOT</version>
+    <version>07.02.2023-dev-SNAPSHOT</version>
     <packaging>ejb</packaging>
 
     <name>utilidades</name>
@@ -30,6 +30,29 @@
     </properties>
 
     <dependencies>
+        
+        <!-- https://mvnrepository.com/artifact/junit/junit -->
+        <dependency>
+		<groupId>org.junit.jupiter</groupId>
+		<artifactId>junit-jupiter-engine</artifactId>
+		<version>5.5.2</version>
+		<scope>test</scope>
+	</dependency>
+        
+        <!-- https://mvnrepository.com/artifact/org.mockito/mockito-core -->
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>4.8.0</version>
+            <scope>test</scope>
+        </dependency>
+
+        
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-text</artifactId>
+            <version>1.9</version>
+        </dependency>
       
         <!--Apache Log4j 2-->
         <dependency>
