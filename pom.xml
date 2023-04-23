@@ -4,7 +4,7 @@
 
     <groupId>com.fcastillo</groupId>
     <artifactId>utilidades</artifactId>
-    <version>07.02.2023-dev-SNAPSHOT</version>
+    <version>14.02.2023-dev-SNAPSHOT</version>
     <packaging>ejb</packaging>
 
     <name>utilidades</name>
@@ -33,11 +33,11 @@
         
         <!-- https://mvnrepository.com/artifact/junit/junit -->
         <dependency>
-		<groupId>org.junit.jupiter</groupId>
-		<artifactId>junit-jupiter-engine</artifactId>
-		<version>5.5.2</version>
-		<scope>test</scope>
-	</dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>5.5.2</version>
+            <scope>test</scope>
+        </dependency>
         
         <!-- https://mvnrepository.com/artifact/org.mockito/mockito-core -->
         <dependency>
@@ -80,6 +80,21 @@
             <artifactId>jjwt</artifactId>
             <version>${jsonwebtoken.version}</version>
         </dependency>
+        
+        <!--Primefaces-->
+        <dependency>
+            <groupId>org.primefaces</groupId>
+            <artifactId>primefaces</artifactId>
+            <version>12.0.0</version>
+        </dependency>
+        
+        <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-collections4 -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-collections4</artifactId>
+            <version>4.4</version>
+        </dependency>
+
     
     </dependencies>
 

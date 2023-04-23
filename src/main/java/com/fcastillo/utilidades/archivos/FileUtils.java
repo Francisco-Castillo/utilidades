@@ -19,6 +19,8 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
+import org.apache.commons.collections4.CollectionUtils;
+import org.primefaces.model.file.UploadedFile;
 
 /**
  *
@@ -32,18 +34,46 @@ public class FileUtils {
 	File file = new File(path);
 	try {
 	    FileOutputStream fos = new FileOutputStream(file);
+
 	    // read the submitted file as chunks, and write to the server's file
 	    byte[] buff = new byte[5 * 1024];
+
 	    int len;
+
 	    while ((len = uploadedInputStream.read(buff)) != -1) {
 		fos.write(buff, 0, len);
 	    }
+
 	    fos.close();
+
 	} catch (IOException e) {
 
 	    e.printStackTrace();
 	}
     }//</editor-fold>
+
+    public static void saveMultipleFiles(List<UploadedFile> files, String uploadDirectory) throws Exception {
+
+	try {
+	    if (CollectionUtils.isNotEmpty(files)) {
+
+		for (UploadedFile file : files) {
+
+		    byte[] bytes = file.getContent();
+
+		    String fileName = file.getFileName();
+
+		    BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(new File(uploadDirectory + fileName)));
+
+		    stream.write(bytes);
+		    stream.close();
+		}
+
+	    }
+	} catch (Exception e) {
+	    throw e;
+	}
+    }
 
     //<editor-fold defaultstate="collapsed" desc="isFileExists()">
     /**
@@ -140,6 +170,26 @@ public class FileUtils {
 
 	Files.createDirectory(path);
 
+    }
+
+    public static File uploadedFileToFileConverter(UploadedFile uf) {
+	InputStream inputStream = null;
+	OutputStream outputStream = null;
+	//Add you expected file encoding here:
+	System.setProperty("file.encoding", "UTF-8");
+	File newFile = new File(uf.getFileName());
+	try {
+	    inputStream = uf.getInputStream();
+	    outputStream = new FileOutputStream(newFile);
+	    int read = 0;
+	    byte[] bytes = new byte[1024];
+	    while ((read = inputStream.read(bytes)) != -1) {
+		outputStream.write(bytes, 0, read);
+	    }
+	} catch (IOException e) {
+	    //Do something with the Exception (logging, etc.)
+	}
+	return newFile;
     }
 
 }
